@@ -1,6 +1,18 @@
 var isDate = function (input) {
   //   write your code here
-	return (^[0-9-]*$.test(input));
+	if (input instanceof Date && !isNaN(input)) {
+        return true;
+    }
+
+    // Check if input is a string or number that can be parsed into a valid date
+    if (typeof input === "string" || typeof input === "number") {
+        const parsedDate = new Date(input);
+        return !isNaN(parsedDate);
+    }
+
+    // For all other cases, return false
+    return false;
+	
 };
 
 
